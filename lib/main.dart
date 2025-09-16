@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './about.dart';
 
 void main() {
   runApp(const MyApp());
@@ -31,7 +32,7 @@ class MyHomePage extends StatelessWidget {
       backgroundColor: const Color(0xFFF5F5F5),
       appBar: AppBar(
         title: const Text("Mansab Hashim"),
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: const Color.fromARGB(255, 232, 202, 254),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -91,6 +92,39 @@ class MyHomePage extends StatelessWidget {
                 ),
               ),
             ),
+
+            // make an about section button and link it to the about page
+            // About Section Button
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.deepPurple,
+                    foregroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18),
+                    ),
+                    padding: const EdgeInsets.symmetric(vertical: 14),
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const AboutPage(),
+                      ),
+                    );
+                  },
+                  child: const Text(
+                    "About Me",
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 24),
+
             // Action Buttons
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -102,15 +136,9 @@ class MyHomePage extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    _ActionButton(
-                      icon: Icons.save_alt,
-                      label: "Kontakt\nspeichern",
-                    ),
-                    _ActionButton(icon: Icons.phone, label: "Anrufen"),
-                    _ActionButton(
-                      icon: Icons.calendar_today,
-                      label: "Terminwunsch",
-                    ),
+                    _ActionButton(icon: Icons.save_alt, label: "Contact"),
+                    _ActionButton(icon: Icons.phone, label: "Phone"),
+                    _ActionButton(icon: Icons.calendar_today, label: "Time"),
                   ],
                 ),
               ),
@@ -142,10 +170,7 @@ class MyHomePage extends StatelessWidget {
                       children: [
                         _LinkButton(icon: Icons.email, label: "E-Mail"),
                         _LinkButton(icon: Icons.language, label: "Website"),
-                        _LinkButton(
-                          icon: Icons.contact_mail,
-                          label: "Kontaktanfrage",
-                        ),
+                        _LinkButton(icon: Icons.contact_mail, label: "Card"),
                       ],
                     ),
                     const SizedBox(height: 16),
